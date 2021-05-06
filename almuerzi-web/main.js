@@ -1,4 +1,5 @@
 let mealsState = []
+let ruta = 'login' //login, register, orders
 const stringToHTML = (s) => {
     const parser = new DOMParser()
     const doc = parser.parseFromString(s, 'text/html')
@@ -27,7 +28,8 @@ const renderOrder = (order, meals) => {
     return element
 
 }
-window.onload = () => {
+
+const inicializaFormulario = () =>{
     const orderForm = document.getElementById('order')
     orderForm.onsubmit = (e) => {
         e.preventDefault()
@@ -45,10 +47,10 @@ window.onload = () => {
             user_id: 'Chanchito feliz',
 
         }
-        fetch('https://custom-build-43oqvw0gg-diego717.vercel.app/api/orders', {
+        fetch('https://custom-build-eight-lake.vercel.app/api/orders', {
             method: 'POST',
             headers: {
-                'Content-type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(order)
 
@@ -60,9 +62,10 @@ window.onload = () => {
                 submit.removeAttribute('disabled')
             })
 
-
-    }
-    fetch('https://custom-build-43oqvw0gg-diego717.vercel.app/api/meals')
+}
+}
+const inicializaDatos = () =>{
+    fetch('https://custom-build-eight-lake.vercel.app/api/meals')
 
         .then(response => response.json())
         .then(data => {
@@ -73,7 +76,7 @@ window.onload = () => {
             mealsList.removeChild(mealsList.firstElementChild)
             listItems.forEach(element => mealsList.appendChild(element))
             submit.removeAttribute('disabled')
-            fetch('https://custom-build-43oqvw0gg-diego717.vercel.app/api/orders')
+            fetch('https://custom-build-eight-lake.vercel.app/api/orders')
                 .then(response => response.json())
                 .then(ordersData => {
                     const ordersList = document.getElementById('orders-list')
@@ -83,5 +86,27 @@ window.onload = () => {
 
                 })
         })
-
 }
+
+window.onload = () => {
+    const loginForm = document.getElementById('login-form')
+    loginForm.onsubmit = (e) => {
+        e.preventDefault()
+        const email = document.getElementById('email').value
+        const password = document.getElementById('password').value
+    }
+     fetch('https://custom-build-eight-lake.vercel.app/api/auth/login', {
+         method: 'POST',
+             headers: {
+                 'Content-Type': 'application/json',
+             },
+             body: JSON.stringify({ email, password})
+
+         }).then(x => x.json())
+         .then (respuesta => {
+             localStorage.setItem('token', respuesta.token)
+         })
+     }
+   // inicializaFormulario()
+   // inicializaDatos()
+

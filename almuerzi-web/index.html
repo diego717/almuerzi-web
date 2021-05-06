@@ -4,25 +4,48 @@
 <head>
     <title>Almuerzi Web</title>
     <link rel="stylesheet" href="main.css" type="text/css" />
+    <meta charset="utf-8">
 </head>
 
-<body>
-    <div id="meals">
-        <ul id="meals-list">
-            <p>Cargando... </p>
-        </ul>
-        <form id="order">
-            <input id="meals-id" type="hidden" />
-            <input id="submit" type="submit" disabled />
+<body> 
+     
+     <div class="form-main">
+        
+    <div><img src="C:\workspace\almuerzi-web\icons8-accede-redondeado-derecho.gif" height="40" width="40" align="left"/> </div>
+    <p class="form-title">Inicia sesion</p>
+        <form id='login-form' class="login-form">
+            <div>
+                <p>Email
+                </p>
+                <input id='email' placeholder="Email" />
+            </div>
+            <div>
+                <p>Contraseña
+                </p>
+                <input id='password' placeholder="Contraseña" type="password" />
+            </div>
+            <div>
+                <button class="btn">Enviar</button>
+            </div>
+
         </form>
-    </div>
-    <div id="orders">
-        <ul id="orders-list">
-            <p>Cargando...</p>
-
-        </ul>
-    </div>
-
+    </div> -->
+     <template id="orders-view"> -->
+        <div id="meals">
+            <ul id="meals-list">
+                <p>Cargando... </p>
+            </ul>
+            <form id="order">
+                <input id="meals-id" type="hidden" />
+                <button id="submit" disabled>Enviar</button> 
+            </form>
+        </div>
+        <div id="orders">
+            <ul id="orders-list">
+                <p>Cargando...</p>
+            </ul>
+        </div>
+    <!-- </template> -->
 </body>
 <script src="main.js"></script>
 <html>
